@@ -1,5 +1,4 @@
 function loadStory(path, list_name) {
-    console.log(path)
     fetch(path)
       .then(response => {
         if (!response.ok) throw new Error("Failed to load story");
@@ -13,7 +12,7 @@ function loadStory(path, list_name) {
         <div class="story-content">
         ${html}
         </div>
-        <p><a href="#" onclick="goBack(${list_name})">← Back to story list</a></p>
+        <p><a href="#" onclick="goBack('${list_name}')">← Back to story list</a></p>
         `;
       })
       .catch(error => {
@@ -23,13 +22,7 @@ function loadStory(path, list_name) {
   }
 
 function goBack(list_name) {
-    // document.getElementById("story-list").style.display = "block";
+    console.log(`<${list_name}></${list_name}>`)
     document.getElementById("main").innerHTML = `<${list_name}></${list_name}>`;
-}
-
-function lalaLala(path, list_name) {
-  console.log("lalalala")
-  console.log(path)
-  console.log(list_name)
 }
   

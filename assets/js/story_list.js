@@ -19,11 +19,6 @@ class StoryPreview extends HTMLElement {
         const date = this.getAttribute('date')
 		const list_name = this.getAttribute('list_name')
 
-		console.log(title)
-		console.log(link)
-		console.log(date)
-		console.log(list_name)
-
 		let result = `
 							<article>
 
@@ -50,15 +45,30 @@ class StoryPreview extends HTMLElement {
   }
   customElements.define('story-preview', StoryPreview);
 
-  class StoryListCzech extends HTMLElement {
+class StoryListCzech extends HTMLElement {
     
 	connectedCallback() {
 		this.innerHTML = `
         <div id="main">
         <story-preview title="zlaté české ručičky" date="april 24, 2021" link="rucicky.html" list_name="story-list-czech"></story-preview>
         <story-preview title="duchové minulosti ravu" date="april 24, 2021" link="duchove.html" list_name="story-list-czech"></story-preview>
+		<story-preview title="loud places" date="november 16, 2019" link="loud_places_cz.html" list_name="story-list-czech"></story-preview>
         </div>
         `;
 	  }
   }
-  customElements.define('story-list-czech', StoryListCzech);
+
+  class StoryListEnglish extends HTMLElement {
+    
+	connectedCallback() {
+		this.innerHTML = `
+        <div id="main">
+        <story-preview title="czech ingenuity" date="april 24, 2021" link="czech_ingenuity.html" list_name="story-list-english"></story-preview>
+		<story-preview title="loud places" date="november 16, 2019" link="loud_places_en.html" list_name="story-list-english"></story-preview>
+        </div>
+        `;
+	  }
+  }
+
+customElements.define('story-list-czech', StoryListCzech);
+customElements.define('story-list-english', StoryListEnglish);

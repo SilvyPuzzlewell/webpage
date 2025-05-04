@@ -42,8 +42,7 @@ class Header extends HTMLElement {
 					${links}
 				</ul>
 			</nav>`;
-		
-		console.log(result);
+
 		this.innerHTML = result;
 	}
   }

@@ -30,8 +30,8 @@ def convert_runs(runs):
 
 # Example usage
 if __name__ == "__main__":
-    input_path = "duchove.docx"
-    output_path = "duchove.html"
+    input_path = "loud_places_en.docx"
+    output_path = "loud_places_en.html"
 
     html = docx_to_html(input_path)
     with open(output_path, 'w', encoding='utf-8') as f:
