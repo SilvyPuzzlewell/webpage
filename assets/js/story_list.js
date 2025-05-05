@@ -51,8 +51,10 @@ class StoryListCzech extends HTMLElement {
 		this.innerHTML = `
         <div id="main">
         <story-preview title="zlaté české ručičky" date="april 24, 2021" link="rucicky.html" list_name="story-list-czech"></story-preview>
-        <story-preview title="duchové minulosti ravu" date="april 24, 2021" link="duchove.html" list_name="story-list-czech"></story-preview>
 		<story-preview title="loud places" date="november 16, 2019" link="loud_places_cz.html" list_name="story-list-czech"></story-preview>
+		<story-preview title="bitva na tursku" date="march 13, 2025" link="bitva.html" list_name="story-list-czech"></story-preview>
+		<story-preview title="duchové minulosti ravu" date="april 24, 2021" link="duchove.html" list_name="story-list-czech"></story-preview>
+		<story-preview title="můžeš prostě dělat věci" date="november 15, 2024" link="veci.html" list_name="story-list-czech"></story-preview>
         </div>
         `;
 	  }
