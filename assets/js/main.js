@@ -256,3 +256,74 @@
 		}
 
 })(jQuery);
+
+// Mobile optimizations
+(function() {
+	// Lazy loading images
+	document.addEventListener("DOMContentLoaded", function() {
+		var lazyImages = [].slice.call(document.querySelectorAll("img.lazy"));
+
+		if ("IntersectionObserver" in window) {
+			let lazyImageObserver = new IntersectionObserver(function(entries, observer) {
+				entries.forEach(function(entry) {
+					if (entry.isIntersecting) {
+						let lazyImage = entry.target;
+						lazyImage.src = lazyImage.dataset.src;
+						lazyImage.classList.remove("lazy");
+						lazyImage.classList.add("loaded");
+						lazyImageObserver.unobserve(lazyImage);
+					}
+				});
+			});
+
+			lazyImages.forEach(function(lazyImage) {
+				lazyImageObserver.observe(lazyImage);
+			});
+		}
+	});
+
+	// Passive event listeners for better scrolling
+	document.addEventListener('touchstart', function() {}, {passive: true});
+	document.addEventListener('touchmove', function() {}, {passive: true});
+	document.addEventListener('wheel', function() {}, {passive: true});
+
+	// Debounce resize events
+	let resizeTimer;
+	window.addEventListener('resize', function() {
+		document.body.classList.add("resize-animation-stopper");
+		clearTimeout(resizeTimer);
+		resizeTimer = setTimeout(() => {
+			document.body.classList.remove("resize-animation-stopper");
+		}, 400);
+	});
+
+	// Add touch support for navigation
+	const nav = document.querySelector('#nav');
+	if (nav) {
+		nav.addEventListener('touchstart', function(e) {
+			if (e.target.tagName === 'A') {
+				e.target.classList.add('touch-active');
+			}
+		}, {passive: true});
+
+		nav.addEventListener('touchend', function(e) {
+			if (e.target.tagName === 'A') {
+				e.target.classList.remove('touch-active');
+			}
+		}, {passive: true});
+	}
+
+	// Detect connection speed and adjust accordingly
+	if ('connection' in navigator) {
+		if (navigator.connection.saveData) {
+			// Reduce image quality or disable animations
+			document.body.classList.add('save-data');
+		}
+		
+		if (navigator.connection.effectiveType === 'slow-2g' || 
+			navigator.connection.effectiveType === '2g') {
+			// Minimize animations and effects
+			document.body.classList.add('reduced-motion');
+		}
+	}
+})();
