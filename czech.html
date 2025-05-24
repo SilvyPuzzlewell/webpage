@@ -18,7 +18,6 @@
 			<div id="wrapper">
 				<page-header active_position=1></page-header>
 				<div id="main">
-					<story-list-czech></story-list-czech>
 				</div>
 			</div>
 
@@ -30,10 +29,14 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
-			<script src="assets/js/story_load.js"></script>
 			<script src="assets/js/story_list.js"></script>
 			<script src="assets/js/constants.js" type="module"></script>
 			<script src="assets/js/header.js" type="module"></script>
+			<script src="./assets/js/main_page_loader.js" type="module"></script>
+			<script type="module">
+				import { loadMain } from './assets/js/main_page_loader.js';
+				loadMain('story-list-czech');
+			</script>
 
 	</body>
 </html>
