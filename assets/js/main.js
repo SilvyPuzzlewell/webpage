@@ -3,6 +3,7 @@
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
+import { create_links_html } from './header.js';
 
 (function($) {
 
@@ -143,12 +144,14 @@
 				});
 
 		// Panel.
+            $navPanel = 				
+			`<div id="navPanel"> 
+				<!-- ${create_links_html()} -->
+				<nav></nav>
+				<a href="#navPanel" class="close"></a>
+			</div>`;
 			$navPanel = $(
-				'<div id="navPanel">' +
-					'<nav>' +
-					'</nav>' +
-					'<a href="#navPanel" class="close"></a>' +
-				'</div>'
+				$navPanel
 			)
 				.appendTo($body)
 				.panel({
@@ -167,7 +170,6 @@
 
 			// Move nav content on breakpoint change.
 				var $navContent = $nav.children();
-
 				breakpoints.on('>medium', function() {
 
 					// NavPanel -> Nav.
@@ -189,7 +191,6 @@
 							.addClass('alt');
 
 				});
-
 			// Hack: Disable transitions on WP.
 				if (browser.os == 'wp'
 				&&	browser.osVersion < 10)

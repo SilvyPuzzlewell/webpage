@@ -1,5 +1,26 @@
 import { LINKS } from './constants.js';
 
+function create_links() {
+	let links = LINKS;
+	let ret = [];
+	links.forEach(function (item, index) {
+		ret.push(item);
+	});
+	return ret.join("\n");
+}
+
+export function create_links_html() {
+	let links = create_links();
+
+	let result = `
+		<nav>
+			<ul class="links">
+				${links}
+			</ul>
+		</nav>`;
+	return result;
+}
+
 class Header extends HTMLElement {
 	static get observedAttributes() {
 		return ['active_position'];
@@ -41,7 +62,8 @@ class Header extends HTMLElement {
 				<ul class="links">
 					${links}
 				</ul>
-			</nav>`;
+			</nav>
+			`;
 
 		this.innerHTML = result;
 	}
