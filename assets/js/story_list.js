@@ -56,6 +56,7 @@ class StoryListCzech extends HTMLElement {
         <div id="main">
         <story-preview title="czech ingenuity" date="april 24, 2021" link_story="czech_ingenuity" link_template="english.html" list_name="story-list-english"></story-preview>
 		<story-preview title="loud places" date="november 16, 2019" link_story="loud_places_en" link_template="english.html" list_name="story-list-english"></story-preview>
+		<story-preview title="shelter" date="april 10, 2026" link_story="shelter_en" link_template="english.html" list_name="story-list-english"></story-preview>
         </div>
         `;
 	  }
