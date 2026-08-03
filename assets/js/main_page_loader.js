@@ -29,12 +29,30 @@ class MainPageLoader {
         this.renderFunction(storyHtml, this.mainElement);
     }
 
+    /**
+     * A story is rendered by this same template page with ?writing= set, so
+     * the list it belongs to is the current URL with the query dropped.
+     * Deriving it this way always lands on the right list, unlike going back
+     * through history, which points wherever the reader happened to come from
+     * (a direct link, a bookmark, or the other language's list).
+     */
+    storyListUrl() {
+        const url = new URL(window.location.href);
+        url.search = '';
+        url.hash = '';
+        return url.href;
+    }
+
+    backLinkHtml() {
+        return `<p><a href="${this.storyListUrl()}">← Back to story list</a></p>`;
+    }
+
     defaultRender(storyHtml, element) {
         const combinedHtml = `
         <div class="story-content">
         ${storyHtml}
         </div>
-        <p><a href="#" onclick="history.back()">← Back to story list</a></p>
+        ${this.backLinkHtml()}
       `;
         element.innerHTML = combinedHtml;
     }
@@ -77,7 +95,7 @@ export class WritingMainPageLoader extends MainPageLoader {
       <div class="story-content">
       ${storyHtml}
       </div>
-      <p><a href="#" onclick="history.back()">← Back to story list</a></p>
+      ${this.backLinkHtml()}
     `;
   }
 
